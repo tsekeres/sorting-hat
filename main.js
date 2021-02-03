@@ -1,6 +1,7 @@
 console.log("Ho Ender.");
 
-// const studentCards = [
+const studentCards = [
+];
 //   {
 //     name: "Tad",
 //     house: "Gryffindor",
@@ -26,7 +27,6 @@ console.log("Ho Ender.");
 //     crestImgUrl: "https://www.clipartmax.com/png/middle/264-2649292_ravenclaw-crest-harry-potter-ravenclaw-crest.png",
 //     idNumber: 
 //   },
-// ];
 
 const printToDom = (divId, textToPrint) => {
   const selectedDiv = document.querySelector(divId);
@@ -35,20 +35,20 @@ const printToDom = (divId, textToPrint) => {
 }
 
 const cardBuilder = (taco) => {
-  let domCard = '';
+  let domString = '';
 
 for (let [i, element] of taco.entries()) {
-  domCard += `<div class="card text-center my-2" style="width: 14rem;" id=${i}>
+  domString += `<div class="card text-center my-2" style="width: 14rem;" id=${i}>
         <img src="${element.crestImgUrl}" class="card-img-top" alt="Hogwarts House Crest">
         <div class="card-body">
           <h4 class="card-title">${element.house}</h4>
           <h5 class="card-student">${element.name}</h5>
           <p class="card-attributes">${element.attribute}</p>
-          <button href="#" id=${i} class="btn btn-primary">Expel</button>
+          <button type="button" id=${taco[i].id} class="btn btn-primary">Expel</button>
         </div>
       </div>`;
       }
-      printToDom('#student-cards', domCard);
+      printToDom('#student-cards', domString);
 }
 
 
@@ -64,15 +64,32 @@ const handleButtonClick = (e) => {
 
 }
 
+const studentHouse = [
+  "Ravenclaw",
+  "Gryffindor",
+  "Hufflepuff",
+  "Slytherine"
+];
+
+
 const getFormInfo = (e) => {
 
   const name = document.querySelector('#floatingName').value;
 
+  
+
+  const randomHouse = Math.floor(Math.random() * studentHouse.length);
+  const house = studentHouse[randomHouse];
+
   const obj = {
     name,
+    house,
   }
-  
-  // document.querySelector('#form').reset();
+ 
+  studentCards.push(obj);
+  cardBuilder(studentCards);
+
+  document.querySelector("form").reset();
   
 }
 
@@ -80,7 +97,7 @@ const getFormInfo = (e) => {
 
 const buttonEvents = () => {
   document.querySelector('#jumbo').addEventListener('click', handleButtonClick);
-  // document.querySelector('#form').addEventListener('click', getFormInfo);
+  document.querySelector('#sortButton').addEventListener('click', getFormInfo);
 }
 
 
