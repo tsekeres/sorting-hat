@@ -5,6 +5,7 @@ console.log("Ho Ender.");
 //     name: "Tad",
 //     house: "Gryffindor",
 //     crestImgUrl: "https://i.pinimg.com/originals/e1/13/2f/e1132fc96dfc0e2f0373fee35a45e193.png",
+//     attribute: "  ",
 //     idNumber: 
 //   },
 //   {
@@ -33,16 +34,23 @@ const printToDom = (divId, textToPrint) => {
 
 }
 
-const domString = `<div class="form">
-                      <h3 class="form-title">Enter First Year's Name:</h3>
-                      <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingName" placeholder="Name">
-                        <label for="floatingInput">Name</label>
-                      </div>
-                      <p class="lead">
-                      <a id="sortButton" class="btn btn-primary btn-lg" href="#" role="button">Sort!</a>
-                      </p>
-                    </div>`;
+const cardBuilder = (taco) => {
+  let domCard = '';
+
+for (let [i, element] of taco.entries()) {
+  domCard += `<div class="card text-center my-2" style="width: 14rem;" id=${i}>
+        <img src="${element.crestImgUrl}" class="card-img-top" alt="Hogwarts House Crest">
+        <div class="card-body">
+          <h4 class="card-title">${element.house}</h4>
+          <h5 class="card-student">${element.name}</h5>
+          <p class="card-attributes">${element.attribute}</p>
+          <button href="#" id=${i} class="btn btn-primary">Expel</button>
+        </div>
+      </div>`;
+      }
+      printToDom('#student-cards', domCard);
+}
+
 
 
 
@@ -50,10 +58,9 @@ const handleButtonClick = (e) => {
   
   const buttonId = e.target.id;
 
-  if (buttonId === 'jumbo') {
-    printToDom('#form', domString);
+  if (buttonId === "jumbo") {
+       document.getElementById("form").style.visibility = "visible";
   }; 
-
 
 }
 
@@ -64,8 +71,8 @@ const getFormInfo = (e) => {
   const obj = {
     name,
   }
-
-  document.querySelector('#form').reset();
+  
+  // document.querySelector('#form').reset();
   
 }
 
@@ -73,7 +80,7 @@ const getFormInfo = (e) => {
 
 const buttonEvents = () => {
   document.querySelector('#jumbo').addEventListener('click', handleButtonClick);
-  document.querySelector('#form').addEventListener('click', getFormInfo);
+  // document.querySelector('#form').addEventListener('click', getFormInfo);
 }
 
 
