@@ -2,30 +2,6 @@ console.log("Ho Ender.");
 
 const studentCards = [
 ];
-//   {
-//     name: "Tad",
-//     house: "Gryffindor",
-//     crestImgUrl: "https://i.pinimg.com/originals/e1/13/2f/e1132fc96dfc0e2f0373fee35a45e193.png",
-//     attribute: "You are courageous, chivalric, and determined!", 
-//   },
-//   {
-//     name: "Geo",
-//     house: "Slytherin",
-//     crestImgUrl: "https://i.pinimg.com/originals/5b/90/db/5b90db4bc3ac72b596356cfc9ac7e712.png",
-//     attribute: "You are ambitious, cunning and resourceful!",
-//   },
-//   {
-//     name: "John",
-//     house: "Hufflepuff",
-//     crestImgUrl: "https://wallpaperaccess.com/full/4116097.jpg",
-//     attribute: "You value hard work, patience and loyalty!", 
-//   },
-//   {
-//     name: "Lily",
-//     house: "Ravenclaw",
-//     crestImgUrl: "https://www.clipartmax.com/png/middle/264-2649292_ravenclaw-crest-harry-potter-ravenclaw-crest.png",
-//     attribute: "You value intelligence, learning, wisdom and wit!",
-//   },
 
 const printToDom = (divId, textToPrint) => {
   const selectedDiv = document.querySelector(divId);
@@ -87,19 +63,17 @@ const getFormInfo = (e) => {
 
   const name = document.querySelector('#floatingName').value;
 
-  const randomHouse = Math.floor(Math.random() * studentHouse.length);
-  const house = studentHouse[randomHouse];
+  const randomSort = Math.floor(Math.random() * studentHouse.length);
+  const house = studentHouse[randomSort];
 
-  const studentIds = studentCards.map(student => student.id).sort((a, b) => a - b);
+  const cardIds = studentCards.map(student => student.id).sort((a, b) => a - b);
 
-  const id = studentIds.length ? studentIds[studentIds.length - 1] + 1 : 1;
+  const id = cardIds.length ? cardIds[cardIds.length - 1] + 1 : 1;
 
   const obj = {
     name,
     house,
     id,
-    // crestImgUrl,
-    // attribute,
   };
   
   if (house === "Gryffindor") {
@@ -116,8 +90,8 @@ const getFormInfo = (e) => {
     obj.attribute = ravAttribute;
   }
   const helpfulForm = () => {
-    let warning = `<h6 class="text-white">Please type in a name.</h6>`;
-    printToDom('#warningMessage', warning);
+    let reminder = `<h6 class="text-white">Please type in a name.</h6>`;
+    printToDom('#reminderMessage', reminder);
   }
 
   if (name.length === 0) {
@@ -134,8 +108,8 @@ const expel = (e) => {
   const targetId = Number(e.target.id);
 
   if (targetType === "button") {
-    const studentIndex = studentCards.findIndex((student) => student.id === targetId);
-    studentCards.splice(studentIndex, 1);
+    const cardIndex = studentCards.findIndex((student) => student.id === targetId);
+    studentCards.splice(cardIndex, 1);
   }
   cardBuilder(studentCards);
 }
