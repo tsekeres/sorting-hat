@@ -1,3 +1,7 @@
 body {
   background-color: steelblue;
 }
+
+.card-img-top {
+  object-fit: contain;
+}
