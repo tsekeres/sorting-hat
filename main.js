@@ -1,7 +1,8 @@
 console.log("Ho Ender.");
 
-const studentCards = [
-];
+const studentCards = [];
+
+const deathEaters = [];
 
 const printToDom = (divId, textToPrint) => {
   const selectedDiv = document.querySelector(divId);
@@ -14,7 +15,7 @@ const cardBuilder = (taco) => {
 
 for (let [i, element] of taco.entries()) {
   domString += `<div class="card text-center my-2" style="width: 14rem;" id=${i}>
-        <img src="${element.crestImgUrl}" class="card-img-top" alt="Hogwarts House Crest">
+        <img src="${element.crestImgUrl}" class="card-img-top object-fit: contain" alt="Hogwarts House Crest">
         <div class="card-body">
           <h4 class="card-title">${element.house}</h4>
           <h5 class="card-student">${element.name}</h5>
@@ -26,7 +27,20 @@ for (let [i, element] of taco.entries()) {
       printToDom('#student-cards', domString);
 }
 
+const expelBuilder = (taco) => {
+  let domString = '';
 
+for (let [i, element] of taco.entries()) {
+  domString += `<div class="card text-center my-2" style="width: 14rem;" id=${i}>
+        <img src="https://i.pinimg.com/originals/3e/62/c3/3e62c3fe324b8c1b56f54d877d7ea2d3.jpg" class="card-img-top object-fit: contain" alt="Hogwarts House Crest">
+        <div class="card-body">
+          <h4 class="card-title">Death Eater</h4>
+          <h5 class="card-student">${element.name}</h5>
+        </div>
+      </div>`;
+      }
+      printToDom('#expelled-cards', domString);
+}
 
 
 const handleButtonClick = (e) => {
@@ -46,10 +60,10 @@ const studentHouse = [
   "Slytherin"
 ];
 
-  const Gryffindor = "https://www.clipartkey.com/mpngs/m/116-1169931_harry-potter-hogwarts-clipart-at-free-for-personal.png";
-  const Hufflepuff = "https://wallpaperaccess.com/full/4116097.jpg";
-  const Slytherin = "https://toppng.com/uploads/preview/slytherin-sticker-1156332001015i5o3h765.png";
-  const Ravenclaw = "https://www.pinclipart.com/picdir/middle/113-1138734_crest-png-for-free-download-on-harry-potter.png";
+  const Gryffindor = "https://e7.pngegg.com/pngimages/855/960/png-clipart-harry-potter-and-the-philosopher-s-stone-garri-potter-sorting-hat-professor-minerva-mcgonagall-gryffindor-hogwarts-train.png";
+  const Hufflepuff = "https://smallimg.pngkey.com/png/small/43-439176_51-hufflepuff-crest-transparent-hufflepuff-house.png";
+  const Slytherin = "https://www.clipartmax.com/png/middle/230-2302214_slytherin-harry-potter-wiki-fandom-powered-by-wikia-slytherin-crest-transparent.png";
+  const Ravenclaw = "https://i.pinimg.com/originals/4d/ab/0a/4dab0a87210b79bfbb9adbb5432847be.png";
   
   const gryAttribute = "You are courageous, chivalric, and determined!";
   const hufAttribute = "You value hard work, patience and loyalty!";
@@ -89,6 +103,7 @@ const getFormInfo = (e) => {
     obj.crestImgUrl = Ravenclaw;
     obj.attribute = ravAttribute;
   }
+
   const helpfulForm = () => {
     let reminder = `<h6 class="text-white">Please type in a name.</h6>`;
     printToDom('#reminderMessage', reminder);
@@ -107,11 +122,16 @@ const expel = (e) => {
   const targetType = e.target.type;
   const targetId = Number(e.target.id);
 
+  // const eName = 
+
   if (targetType === "button") {
     const cardIndex = studentCards.findIndex((student) => student.id === targetId);
-    studentCards.splice(cardIndex, 1);
+    let deathEater = studentCards.splice(cardIndex, 1);
+    deathEaters.push(...deathEater);
   }
   cardBuilder(studentCards);
+  expelBuilder(deathEaters);
+  
 }
 
 
