@@ -110,6 +110,7 @@ const getFormInfo = (e) => {
       helpfulForm();
   } else {
     studentCards.push(obj);
+    printToDom('#reminderMessage', '');
   }
   cardBuilder(studentCards);
   document.querySelector("form").reset();
