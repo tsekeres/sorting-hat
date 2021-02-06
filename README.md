@@ -23,6 +23,7 @@ Welcome banner with a button to get started. Form that appears to sort upon ente
 Screenshots of your project:
 https://github.com/tsekeres/sorting-hat/blob/main/Screenshot%20(6).png
 https://github.com/tsekeres/sorting-hat/blob/main/Screenshot%20(7).png
+https://github.com/tsekeres/sorting-hat/blob/main/Screenshot%20(8).png
 
 
 List of contributors and links to their GH profiles:
