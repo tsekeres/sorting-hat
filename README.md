@@ -21,6 +21,8 @@ List of features:
 Welcome banner with a button to get started. Form that appears to sort upon entering name and selecting button. Appearence of stylized card showing results of sort.
 
 Screenshots of your project:
+https://github.com/tsekeres/sorting-hat/blob/main/Screenshot%20(6).png
+
 
 List of contributors and links to their GH profiles:
 N/A
