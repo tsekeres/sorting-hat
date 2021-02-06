@@ -42,7 +42,6 @@ for (let [i, element] of taco.entries()) {
       printToDom('#expelled-cards', domString);
 }
 
-
 const handleButtonClick = (e) => {
   
   const buttonId = e.target.id;
@@ -69,8 +68,6 @@ const studentHouse = [
   const hufAttribute = "You value hard work, patience and loyalty!";
   const slyAttribute = "You are ambitious, cunning and resourceful!";
   const ravAttribute = "You value intelligence, learning, wisdom and wit!";
-
-
 
 const getFormInfo = (e) => {
   e.preventDefault();
@@ -122,8 +119,6 @@ const expel = (e) => {
   const targetType = e.target.type;
   const targetId = Number(e.target.id);
 
-  // const eName = 
-
   if (targetType === "button") {
     const cardIndex = studentCards.findIndex((student) => student.id === targetId);
     let deathEater = studentCards.splice(cardIndex, 1);
@@ -134,14 +129,11 @@ const expel = (e) => {
   
 }
 
-
-
 const buttonEvents = () => {
   document.querySelector('#jumbo').addEventListener('click', handleButtonClick);
   document.querySelector('#sortButton').addEventListener('click', getFormInfo);
   document.querySelector('#student-cards').addEventListener('click', expel);
 }
-
 
 const init = () => {
   buttonEvents();
