@@ -9,7 +9,7 @@ Link to your wireframes/prototype:
 N/A
 
 Link to the deployed project:
-https://pedantic-swanson-00b8e2.netlify.app
+https://tssortinghat.netlify.app
 
 Link to your project board:
 https://github.com/tsekeres/sorting-hat/projects/1
